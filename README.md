@@ -1,4 +1,6 @@
-# Simple-RP-Interface-
+# Simple-RP-Interface
 A simple interface for using Gemini AI as a roleplay companion
 
-Demo: www.gonewilds.cooo.in
+Demo: https://gonewilds.cooo.in/
+
+
