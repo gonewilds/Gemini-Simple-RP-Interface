@@ -2,7 +2,8 @@
 A simple interface for using Gemini AI as a roleplay companion
 
 Demo:
-• https://gonewilds.cooo.in/
-• https://gonewilds.github.io/Simple-RP-Interface/
+1. https://gonewilds.cooo.in/
+
+2. https://gonewilds.github.io/Simple-RP-Interface/
 
 
