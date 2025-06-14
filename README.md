@@ -27,5 +27,7 @@ https://telegra.ph/Tutorial-05-29-8
 
 • Character Creation 
 
+• Image Set Feature 
+
 ### Note
 All Information/Data including Character, Chat History, Config, API, etc, are stored locally in Your Browser using localstorage & indexedDB. 
