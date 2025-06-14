@@ -9,6 +9,7 @@ Demo:
 2. https://gonewilds.github.io/Gemini-Simple-RP-Interface/
 
 ### Changelog 
+V2.2
 https://telegra.ph/Tutorial-05-29-8
 
 ### Features:
