@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple RP V.2</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="img/icon.jpg" type="image/x-icon"/>
+  <style>
+        .help-text {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 10px;
+        }
+        .help-text a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .help-text a:hover {
+            text-decoration: underline;
+        }
+        marquee {
+        	color: #fff;
+            font-size: 10px;
+           }
+        .announcement {
+           background-color: #075e54;
+           height: 5px ;
+           display: none;
+        }
+    </style>
+</head>
+<body>
+	<div class="announcement">
+	<marquee behavior="scroll" scrollamount="4"> Update coming soon </marquee>
+	</div>
+  <header class="header">
+       <h3>Simple RP V2</h3>
+       <div class="header-buttons">
+          <button id="exportCharacterButton">
+            <i class="fas fa-file-export"></i> Export
+           </button>
+        <button id="importCharacterButton">
+          <i class="fas fa-file-import"></i> Import
+        </button>
+       </div>
+  </header>
+    <div class="container">
+        <div id="characterList" class="chat-list">
+        </div>
+    </div>
+     <button id="addCharacterButton" class="float-button">
+      <i class="fas fa-plus"></i>
+     </button>
+   <div id="characterFormModal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">×</span>
+            <h2>Add New Character</h2>
+            <form id="characterForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required><br>
+
+                <label for="personality">Personality:</label>
+                <textarea id="personality" rows="3"></textarea><br>
+
+                <label for="scenario">Scenario:</label>
+                <textarea id="scenario" rows="3"></textarea><br>
+
+                <label for="greeting">Greeting Message:</label>
+                <textarea id="greeting" rows="2"></textarea><br>
+
+                 <label for="profilePic">Profile Picture:</label>
+                 <input type="file" id="profilePic" accept="image/*"><br>
+
+                 <label for="lorebook">Add a Lorebook (JSON):</label>
+                 <input type="file" id="lorebook" accept=".json" multiple><br>
+
+                <label for="imageSet">Image Set (Optional):</label>
+                <input type="file" id="imageSet" accept="image/*" multiple><br>
+
+              <div class="button-container">
+                <button type="submit">Save Character</button>
+              </div>
+            </form>
+        </div>
+    </div>
+
+   <div id="editCharacterModal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">×</span>
+            <h2>Edit Character</h2>
+            <form id="editCharacterForm">
+                <label for="editName">Name:</label>
+                <input type="text" id="editName" required><br>
+
+                <label for="editPersonality">Personality:</label>
+                <textarea id="editPersonality" rows="3"></textarea><br>
+
+                <label for="editScenario">Scenario:</label>
+                <textarea id="editScenario" rows="3"></textarea><br>
+
+                <label for="editGreeting">Greeting Message:</label>
+                <textarea id="editGreeting" rows="2"></textarea><br>
+
+               <label>Lorebook Attached:</label>
+               <ul id="lorebookList"></ul><br>
+
+                 <label for="editProfilePic">Profile Picture:</label>
+                 <input type="file" id="editProfilePic" accept="image/*"><br>
+
+                 <label for="editLorebook">Add a Lorebook (JSON):</label>
+                 <input type="file" id="editLorebook" accept=".json" multiple><br>
+
+                <label for="editImageSet">Image Set (Optional):</label>
+                <input type="file" id="editImageSet" accept="image/*" multiple><br>
+
+                 <input type="hidden" id="editIndex" value="">
+              <div class="button-container">
+                <button type="submit">Save Changes</button>
+              </div>
+            </form>
+        </div>
+    </div>
+    <div id="exportCharacterModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2>Export Character</h2>
+            <p style="font-size:80%;">Select a character to export:</p>
+            <select id="characterSelect"></select><br>
+             <div class="button-container">
+              <button id="confirmExport">Export</button>
+              <p style="font-size:50%;">*Only exported character from this site can be imported using the import button</p>
+            </div>
+
+        </div>
+    </div>
+     <div id="importCharacterModal" class="modal">
+        <div class="modal-content">
+           <span class="close-modal">×</span>
+            <h2>Import Character</h2>
+             <p style="font-size:80%;">Load From Exported Json File or Tavern V2 Card PNG</p><br>
+            <input type="file" id="fileInput" accept=".json, image/*"><br><br>
+            	<p style="font-size:80%;">Download More Character <a href="https://chub.ai/characters?search=" target="_blank">Here</a></p>
+            	<p style="font-size:50%;"> Tavern Json V2 Might Not Work, Use Tavern V2 PNG Card Instead 
+        </div>
+     </div>
+    <div class="help-text">
+    	Version 2.2 - (11/06/2025)
+    <br>
+        Need help? <a href="https://telegra.ph/Tutorial-05-29-8" target="_blank">Click here</a>
+    </div>
+     <script src="png-metadata-browser.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

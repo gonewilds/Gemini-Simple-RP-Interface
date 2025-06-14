@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="rp-room.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="icon" href="img/icon.jpg" type="image/x-icon"/>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header-area">
+            <header class="chat-header">
+                <div class="chat-profile">
+                    <img src="" alt="" id="chatProfilePic">
+                    <span id="chatName"></span>
+                </div>
+                <div class="header-buttons">
+                    <div class="dropdown">
+                        <button id="settingsButton">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div id="settingsDropdown" class="dropdown-content">
+                            <a href="#" id="apiKeySettingButton">API Key Setting</a>
+                            <a href="#" id="generationSettingButton">Generation Setting</a>
+                            <a href="#" id="saveChatButton">Save This Chat</a>
+                            <a href="#" id="loadChatButton">Load Chat</a>
+                            <a href="#" id="characterEditorButton">Character Editor</a>
+                            <a href="#" id="newChatButton">New Chat</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="message-area" id="messageArea">
+            <!-- Messages Area -->
+        </div>
+        <div class="chat-input-area">
+            <div class="chat-input">
+            	<button id="uploadButton"><i class="fas fa-camera-alt"></i><span id="uploadBadge" class="upload-badge">1</span></button>
+                <textarea id="messageInput" placeholder="Type a message..." rows="4"> </textarea>
+                <button id="regenerateButton"><i class="fas fa-sync-alt"></i></button>
+                <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+                   <div>
+                   <button id="ImpersonateButton">IMPERSONATE</button>
+               </div>
+
+    <div id="apiKeyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2>API Key Setting</h2><br>
+         <p> Enter Your API Key :</p>  <input type="password" id="apiKeyInput" placeholder="Type here..."><br>
+       <p> Dont Have It? Get A Free One <a href="https://aistudio.google.com/apikey" target="_blank">Here</a></p>
+       <p> Close This Window And Refresh The Page Once You Enter The API Key. </p>
+        </div>
+    </div>
+    <div id="generationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2>Generation Setting</h2>
+            <div class="setting-item">
+                <label for="temperatureInput">Temperature</label>
+                <div class="slider-container">
+                    <input type="range" id="temperatureInput" min="0" max="2" step="0.01" value="1" >
+                    <span id="temperatureValue">1</span>
+                </div>
+            </div>
+            <div class="setting-item">
+                <label for="presencePenaltyInput">Presence Penalty</label>
+                <div class="slider-container">
+                    <input type="range" id="presencePenaltyInput" min="-1" max="2" step="0.01" value="0.5">
+                    <span id="presencePenaltyValue">0.5</span>
+                </div>
+            </div>
+            <div class="setting-item">
+                <label for="frequencyPenaltyInput">Frequency Penalty</label>
+                <div class="slider-container">
+                    <input type="range" id="frequencyPenaltyInput" min="-1" max="2" step="0.01" value="0.7">
+                    <span id="frequencyPenaltyValue">0.7</span>
+                </div>
+            </div>
+            <div class="setting-item">
+                <label for="topPInput">Top P</label>
+                <div class="slider-container">
+                    <input type="range" id="topPInput" min="0" max="1" step="0.01" value="0.95">
+                    <span id="topPValue">0.95</span>
+                </div>
+            </div>
+            <div class="setting-item">
+                <label for="topKInput">Top K</label>
+                <input type="number" id="topKInput" value="40" min="1" placeholder="Enter Top K">
+            </div>
+            <div class="setting-item">
+                <label for="maxTokenInput">Max Output Tokens</label>
+                <input type="number" id="maxTokenInput" value="300" min="1" placeholder="Enter Max Token">
+            </div>
+            <div class="setting-item">
+                <label for="customInstructions">Custom Instructions</label>
+                <textarea id="customInstructions"  rows="4"></textarea>
+            </div>
+            <div class="setting-item">
+                <label for="customImpersonateInstructions">Impersonate Instructions</label>
+                <textarea id="customImpersonateInstructions"  rows="4"></textarea>
+            </div>
+            <div class="button-container">
+                <button id="applyButton">Apply</button>
+            </div>
+        </div>
+    </div>
+    <div id="editCharacterModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2>Edit Character</h2>
+            <form id="editCharacterForm">
+                <label for="editName">Name:</label>
+                <input type="text" id="editName" required><br>
+
+                <label for="editPersonality">Personality:</label>
+                <textarea id="editPersonality" rows="3"></textarea><br>
+
+                <label for="editScenario">Scenario:</label>
+                <textarea id="editScenario" rows="3"></textarea><br>
+
+                <label for="editGreeting">Greeting Message:</label>
+                <textarea id="editGreeting" rows="2"></textarea><br>
+
+                <label for="editProfilePic">Profile Picture:</label>
+                <input type="file" id="editProfilePic" accept="image/*"><br>
+
+                <label for="editLorebook">Lorebook (Optional):</label>
+                <input type="file" id="editLorebook" accept=".json" multiple><br>
+
+                <input type="hidden" id="editIndex" value="">
+                <div class="button-container">
+                    <button type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="importmap">
+        {
+            "imports": {
+                "@google/generative-ai": "https://esm.run/@google/generative-ai"
+            }
+        }
+    </script>
+    <script src="rp-room.js" type="module"></script>
+</body>
+</html>
